@@ -8,7 +8,7 @@ import {checkAuth, handleValidationErrors} from './utils/index.js'
 import {UserController, PostController, CommentController} from './controllers/index.js'
 
 mongoose
-    .connect('mongodb+srv://admin:Dfhufcvfrttdrf20@cluster0.qqavu25.mongodb.net/blog?retryWrites=true&w=majority')
+    .connect(process.env.MONGODB_URI)
     .then(() => {console.log('💾DB OK💾')})
     .catch((err) => console.log('🚫DB ERR🚫', err))
 
@@ -54,7 +54,7 @@ app.patch('/posts/:id', checkAuth, PostController.update)
 app.delete('/posts/:id', checkAuth, PostController.remove)
 
 // * запускает локальный сервер
-app.listen(1818, (err) => {
+app.listen(process.env.PORT || 1818, (err) => {
     if (err) {
         return console.log(err);
     } 
