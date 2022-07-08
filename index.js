@@ -10,7 +10,7 @@ import tagsRouter from './routes/tagsRouter.js'
 import commentsRouter from './routes/commentsRouter.js'
 
 mongoose
-    .connect('mongodb+srv://admin:Dfhufcvfrttdrf20@cluster0.qqavu25.mongodb.net/blog?retryWrites=true&w=majority')
+    .connect(process.env.MONGODB_URL)
     .then(() => {console.log('💾DB OK💾')})
     .catch((err) => console.log('🚫DB ERR🚫', err))
 
